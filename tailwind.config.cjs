@@ -20,7 +20,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        jakarta: ["Plus Jakarta Sans"],
+        jakarta: ["Plus Jakarta Sans", "Courier new"],
       },
     },
   },
