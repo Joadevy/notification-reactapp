@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import Notification from "./Notification.jsx";
 
 function App() {
-  // let NOTIFICATIONS = [1, 2, 3, 4];
   const [NOTIFICATIONS, setNOTIFICATIONS] = useState([]);
-  // let NOTIFICATIONS = [];
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
     requestData();
@@ -14,6 +13,7 @@ function App() {
     const data = await fetch("./data.json");
     const res = await data.json();
     setNOTIFICATIONS(res.notification);
+    setStatus("sucess");
     console.log(NOTIFICATIONS);
   }
 
@@ -33,11 +33,15 @@ function App() {
           Mark all as read
         </button>
       </header>
-      <div className="flex flex-col gap-3">
-        {NOTIFICATIONS.map((notif, index) => (
-          <Notification key={index} props={notif} />
-        ))}
-      </div>
+      {status === "loading" ? (
+        <div className="text-center text-neutral-500">Loading...</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {NOTIFICATIONS.map((notif, index) => (
+            <Notification key={index} props={notif} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }
