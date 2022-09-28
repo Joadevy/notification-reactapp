@@ -4,6 +4,8 @@ import Notification from "./Notification.jsx";
 function App() {
   const [NOTIFICATIONS, setNOTIFICATIONS] = useState([]);
   const [status, setStatus] = useState("loading");
+  const [activeNotif, setActiveNotif] = useState();
+  // TODO: handle a context status for the app to check for the amount of active notifications.
 
   useEffect(() => {
     requestData();
@@ -14,7 +16,9 @@ function App() {
     const res = await data.json();
     setNOTIFICATIONS(res.notification);
     setStatus("sucess");
-    console.log(NOTIFICATIONS);
+    let active = 0;
+    res.notification.forEach((notif) => (notif.status ? active++ : ""));
+    setActiveNotif(active);
   }
 
   return (
@@ -23,7 +27,7 @@ function App() {
         <div className="flex justify-center items-center gap-4">
           <h1 className="font-bold text-2xl">Notifications</h1>
           <div className="w-10 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
-            <p className="text-neutral-50 font-bold">3</p>
+            <p className="text-neutral-50 font-bold">{activeNotif}</p>
           </div>
         </div>
         <button
@@ -36,11 +40,11 @@ function App() {
       {status === "loading" ? (
         <div className="text-center text-neutral-500">Loading...</div>
       ) : (
-        <div className="flex flex-col gap-3">
-          {NOTIFICATIONS.map((notif, index) => (
-            <Notification key={index} props={notif} />
+        <ol className="flex flex-col gap-3">
+          {NOTIFICATIONS.map((notif) => (
+            <Notification key={notif.id} props={notif} />
           ))}
-        </div>
+        </ol>
       )}
     </main>
   );
