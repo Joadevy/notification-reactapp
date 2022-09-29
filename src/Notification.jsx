@@ -13,13 +13,17 @@ const Notification = ({ props }) => {
 
   return (
     <li // eslint-disable-line
-      onClick={notification === true ? () => handleNotification() : null}
-      onKeyDown={notification === true ? () => handleNotification() : null}
-      role={notification === true ? "button" : "presentation"}
-      tabIndex={notification === true ? 0 : null}
+      onClick={
+        activeNotif && notification === true ? () => handleNotification() : null
+      }
+      onKeyDown={
+        activeNotif && notification === true ? () => handleNotification() : null
+      }
+      role={activeNotif && notification === true ? "button" : "presentation"}
+      tabIndex={activeNotif && notification === true ? 0 : null}
       className={
-        notification === true
-          ? "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent hover:border-2 hover:border-neutral-200 hover:cursor-pointer"
+        activeNotif && notification === true
+          ? "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent bg-neutral-light-gray-blue hover:border-2 hover:border-neutral-200 hover:cursor-pointer"
           : "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent hover:border-2 hover:border-neutral-200"
       }
     >
@@ -41,13 +45,20 @@ const Notification = ({ props }) => {
               ""
             )}
           </div>
-          {notification === true ? (
+          {activeNotif && notification === true ? (
             <div className="group w-2 h-2 self-center rounded-full bg-primary-red"></div>
           ) : (
             ""
           )}
         </div>
         <p className="text-xs text-neutral-400">{time}</p>
+        {type === "message" ? (
+          <div className="m-2 p-4 border-[1px] border-neutral-200 rounded-lg text-neutral-500">
+            {content}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </li>
   );

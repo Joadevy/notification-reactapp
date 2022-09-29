@@ -6,7 +6,6 @@ function App() {
   const [NOTIFICATIONS, setNOTIFICATIONS] = useState([]);
   const [status, setStatus] = useState("loading");
   const [activeNotif, setActiveNotif] = useState();
-  // TODO: handle a context status for the app to check for the amount of active notifications.
 
   useEffect(() => {
     requestData();
@@ -22,6 +21,12 @@ function App() {
     setActiveNotif(active);
   }
 
+  const cleanNotifications = () => {
+    if (activeNotif) {
+      setActiveNotif(0);
+    }
+  };
+
   return (
     <StrictMode>
       <NotificationContext.Provider value={{ activeNotif, setActiveNotif }}>
@@ -34,7 +39,7 @@ function App() {
               </div>
             </div>
             <button
-              onClick={() => console.log("hola")}
+              onClick={() => cleanNotifications()}
               className="text-neutral-500 font-semibold"
             >
               Mark all as read
