@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import NotificationContext from "./NotificationContext.jsx";
 
 const Notification = ({ props }) => {
   const { image, name, data, time, type, content, status } = props;
   const [notification, setNotification] = useState(status);
+  const { activeNotif, setActiveNotif } = useContext(NotificationContext);
 
   const handleNotification = () => {
     setNotification(false);
+    setActiveNotif(activeNotif - 1);
   };
 
   return (
