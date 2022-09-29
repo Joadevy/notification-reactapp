@@ -45,7 +45,7 @@
       "name": "Kimberly Smith",
       "data": "commented on your picture",
       "time": "1 week ago",
-      "type": "comment",
+      "type": "comment/picture",
       "content": "./src/assets/images/image-chess.webp",
       "status": false
     },

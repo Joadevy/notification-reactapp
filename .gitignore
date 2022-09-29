@@ -12,8 +12,7 @@ dist
 dist-ssr
 *.local
 .prettierrc
-vite.config.js
-Counter.jsx
+deploy.sh
 public
 # Editor directories and files
 .vscode/*

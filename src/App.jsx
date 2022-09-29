@@ -30,17 +30,17 @@ function App() {
   return (
     <StrictMode>
       <NotificationContext.Provider value={{ activeNotif, setActiveNotif }}>
-        <main className="font-jakarta max-w-3xl bg-neutral-white shadow-xl rounded-md p-8 m-4">
-          <header className="text-neutral-dark-blue flex justify-between gap-72 mt-5 mb-10">
-            <div className="flex justify-center items-center gap-4">
-              <h1 className="font-bold text-2xl">Notifications</h1>
-              <div className="w-10 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
+        <main className="font-jakarta max-w-3xl bg-neutral-white shadow-xl rounded-md p-4 sm:p-8 m-4">
+          <header className="text-neutral-dark-blue flex justify-between gap-2 mt-5 mb-10">
+            <div className="flex justify-center items-center gap-2 sm:gap-4">
+              <h1 className="font-bold text-xl sm:text-2xl">Notifications</h1>
+              <div className="w-8 h-7 sm:w-10 sm:h-8 bg-primary-blue rounded-lg flex items-center justify-center">
                 <p className="text-neutral-50 font-bold">{activeNotif}</p>
               </div>
             </div>
             <button
               onClick={() => cleanNotifications()}
-              className="text-neutral-500 font-semibold"
+              className="text-neutral-500 font-semibold text-sm sm:text-xl"
             >
               Mark all as read
             </button>
