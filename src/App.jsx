@@ -40,7 +40,7 @@ function App() {
             </div>
             <button
               onClick={() => cleanNotifications()}
-              className="text-neutral-500 font-semibold text-sm sm:text-xl"
+              className="text-neutral-500 font-semibold text-sm sm:text-md"
             >
               Mark all as read
             </button>
