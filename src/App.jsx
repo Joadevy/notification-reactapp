@@ -50,11 +50,11 @@ function App() {
           {status === "loading" ? (
             <div className="text-center text-neutral-500">Loading...</div>
           ) : (
-            <ol className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               {NOTIFICATIONS.map((notif) => (
                 <Notification key={notif.id} props={notif} />
               ))}
-            </ol>
+            </div>
           )}
         </main>
       </NotificationContext.Provider>

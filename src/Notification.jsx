@@ -13,7 +13,7 @@ const Notification = ({ props }) => {
   };
 
   return (
-    <li // eslint-disable-line
+    <div
       className={
         activeNotif && notification === true
           ? "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent bg-neutral-light-gray-blue hover:border-2 hover:border-neutral-200 hover:cursor-pointer"
@@ -74,7 +74,7 @@ const Notification = ({ props }) => {
       ) : (
         ""
       )}
-    </li>
+    </div>
   );
 };
 
