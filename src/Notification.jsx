@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+
 import NotificationContext from "./NotificationContext.jsx";
 
 const Notification = ({ props }) => {
@@ -13,24 +14,24 @@ const Notification = ({ props }) => {
 
   return (
     <li // eslint-disable-line
+      className={
+        activeNotif && notification === true
+          ? "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent bg-neutral-light-gray-blue hover:border-2 hover:border-neutral-200 hover:cursor-pointer"
+          : "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent hover:border-2 hover:border-neutral-200 "
+      }
+      role={activeNotif && notification === true ? "button" : "presentation"}
+      tabIndex={activeNotif && notification === true ? 0 : null}
       onClick={
         activeNotif && notification === true ? () => handleNotification() : null
       }
       onKeyDown={
         activeNotif && notification === true ? () => handleNotification() : null
       }
-      role={activeNotif && notification === true ? "button" : "presentation"}
-      tabIndex={activeNotif && notification === true ? 0 : null}
-      className={
-        activeNotif && notification === true
-          ? "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent bg-neutral-light-gray-blue hover:border-2 hover:border-neutral-200 hover:cursor-pointer"
-          : "flex gap-2 p-4 w-full rounded-lg border-2 border-transparent hover:border-2 hover:border-neutral-200"
-      }
     >
       <div className="w-12 sm:w-[6%]">
-        <img src={image} alt={name} className="w-full" />
+        <img alt={name} className="w-full" src={image} />
       </div>
-      <div className="flex flex-col justify-center leading-none gap-2 w-11/12">
+      <div className="flex flex-col justify-center gap-2 w-11/12">
         <div className="flex sm:gap-1 text-neutral-600">
           <div className="flex">
             <p className="flex-shrink-2">
@@ -50,7 +51,7 @@ const Notification = ({ props }) => {
           <div className="w-5 flex items-center justify-center">
             {activeNotif && notification === true ? (
               // <div className="w-5 flex items-center justify-center border-2 border-yellow-300">
-              <div className="w-2 h-2 rounded-full bg-primary-red"></div>
+              <div className="w-2 h-2 rounded-full bg-primary-red" />
             ) : (
               // {/* </div> */}
               ""
@@ -67,8 +68,8 @@ const Notification = ({ props }) => {
         )}
       </div>
       {type === "comment/picture" ? (
-        <div className="w-12  hover:cursor-pointer ">
-          <img src={content} alt="" />
+        <div className="w-16 sm:w-12 hover:cursor-pointer ">
+          <img alt="" src={content} />
         </div>
       ) : (
         ""
